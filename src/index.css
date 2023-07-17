@@ -1,6 +1,5 @@
 .nav-container {
-    /* background-color: #FC8181; */
-    background: linear-gradient(to right, #ff0000 0%, #ff7f00 16.7%, #ffff00 33.3%, #54d254 50%, #ffffff 66.7%, #3625e9 83.3%);
+    background-color: #fa6363; 
     display: flex;
     justify-content: space-between;
     align-items: center;
