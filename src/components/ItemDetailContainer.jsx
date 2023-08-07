@@ -1,8 +1,7 @@
-import ItemList from "./ItemList";
-import { useParams } from "react-router-dom";
+import React from "react";
+import ItemDetail from "./ItemDetail";
 
-const ItemListContainer = () => {
-  const { categoria, catalogo } = useParams();
+const ItemDetailContainer = () => {
   const productos = [
     {
       id: 1,
@@ -159,16 +158,11 @@ const ItemListContainer = () => {
   }
   fetchingProductos();
 
-  const filteredProducts = productos.filter(
-    (producto) =>
-      producto.categoria === categoria || producto.catalogo == catalogo
-  );
-
   return (
-    <>
-      <ItemList productos={filteredProducts} />
-    </>
+    <div>
+      <ItemDetail productos={productos} />
+    </div>
   );
 };
 
-export default ItemListContainer;
+export default ItemDetailContainer;

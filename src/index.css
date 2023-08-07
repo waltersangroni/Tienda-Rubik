@@ -1,23 +1,13 @@
+
 .nav-container {
-    background-color: #fa6363; 
+    background-color: #fd4444; 
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: .5rem;
-    margin: .5rem;
+    margin: 1rem;
     border-radius: .5rem;
     border: 1px solid black;
-}
-
-.logo {
-    background-color: #e0de51;
-    padding: .5rem;
-    margin: .5rem;
-    border-radius: .5rem;
-    font-weight: bold;
-    font-size: 1.5rem;
-    border: 1px solid black;
-    
 }
 
 .categorias {
@@ -29,7 +19,7 @@
     background-color: #e0de51;
     display: flex;
     padding: .5rem;
-    margin: .5rem;
+    margin: 1rem;
     border-radius: .5rem;
     border: 1px solid black;
 }
@@ -45,14 +35,54 @@
     
 }
 
-.bienvenida-container {
-    background-color: #e0de51;
+.contador {
     display: flex;
+    align-items: center;
+    margin: 1rem;
+    
+}
+
+.contadorNumero {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    
+}
+
+.contadorReset {
+    margin-left: .5rem;
+}
+
+.itemlistcontainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
     padding: .5rem;
-    margin: .5rem;
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.card-container {
+    background-color: rgb(234, 148, 28);
+    border-radius: .5rem;   
+
+}
+
+.cardfooter {
+    background-color: #fd4444;
+    border-bottom: 1rem;
     border-radius: .5rem;
+    margin-top: .2rem;
+    
+}
+
+.textcategoria {
+    text-align: end;
+    margin-bottom: .5rem;
     font-weight: bold;
     font-style: italic;
-    border: 1px solid black;
+    font-size: 1.3rem;
     
 }

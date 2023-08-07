@@ -9,12 +9,16 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import CartWidget from "./CartWidget";
+import logo from "../assets/img/rubiks-logo.png";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
     <div className="nav-container">
       <Box p="4" borderRadius="md">
-        <h2 className="logo">Tienda Rubik</h2>
+        <Link to={"/"}>
+          <img src={logo} alt="Logo Rubik" width="180rem" />
+        </Link>
       </Box>
       <Menu>
         <MenuButton
@@ -27,17 +31,22 @@ const NavBar = () => {
         </MenuButton>
         <MenuList bg="#f2f2f2">
           <MenuItem bg="#f2f2f2" borderRadius="1rem">
-            GAN
+            <Link to={`/categoria/${"gan"}`}>GAN</Link>
           </MenuItem>
           <MenuItem bg="#f2f2f2" borderRadius="1rem">
-            MOYU
+            <Link to={`/categoria/${"moyu"}`}>MOYU</Link>
           </MenuItem>
           <MenuItem bg="#f2f2f2" borderRadius="1rem">
-            RUBIK´S
+            <Link to={`/categoria/${"rubik"}`}>RUBIK´S</Link>
+          </MenuItem>
+          <MenuItem bg="#f2f2f2" borderRadius="1rem">
+            <Link to={`/catalogo/${"catalogo"}`}>CATALOGO</Link>
           </MenuItem>
         </MenuList>
       </Menu>
-      <CartWidget />
+      <Link to={"/cart"}>
+        <CartWidget />
+      </Link>
     </div>
   );
 };
