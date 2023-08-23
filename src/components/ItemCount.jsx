@@ -1,8 +1,8 @@
 import { Button } from "@chakra-ui/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ItemDetail from "./ItemDetail";
 
-const ItemCount = () => {
+const ItemCount = ({ stock, id, price, name }) => {
   const [contador, setContador] = useState(0);
 
   const sumar = () => {

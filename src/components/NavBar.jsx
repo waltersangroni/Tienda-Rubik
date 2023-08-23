@@ -11,6 +11,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import CartWidget from "./CartWidget";
 import logo from "../assets/img/rubiks-logo.png";
 import { Link } from "react-router-dom";
+import Contact from "./Contact";
 
 const NavBar = () => {
   return (
@@ -44,9 +45,12 @@ const NavBar = () => {
           </MenuItem>
         </MenuList>
       </Menu>
-      <Link to={"/cart"}>
-        <CartWidget />
-      </Link>
+      <Link to={"/cart"}>{<CartWidget />}</Link>
+      <div>
+        <Link to={"/contact"} className="contacto">
+          {Contact}Contacto
+        </Link>
+      </div>
     </div>
   );
 };

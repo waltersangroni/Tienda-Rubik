@@ -1,7 +1,22 @@
-import React from "react";
+// import React from "react";
+// import { useState } from "react";
 
-const Form = () => {
-  return <div>Form</div>;
-};
+// const Form = () => {
+//   const [nombre, setNombre] = useState("");
 
-export default Form;
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     nombre === "" ? alert("Campo vacio") : alert(nombre);
+//   };
+
+//   return;
+//   <div>
+//     <form onSubmit={handleSubmit}>
+//       <input type="text" onChange={(e) => setNombre(e.target.value)} />
+//       <button type="submit">Enviar</button>
+//     </form>
+//     ;
+//   </div>;
+// };
+
+// export default Form;

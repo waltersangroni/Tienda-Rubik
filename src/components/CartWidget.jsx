@@ -5,7 +5,7 @@ const CartWidget = () => {
   return (
     <div className="carrito-container">
       <img src={carrito} alt="Carrito" width="40rem" />
-      <p className="number-carrito">5</p>
+      <p className="number-carrito">8</p>
     </div>
   );
 };

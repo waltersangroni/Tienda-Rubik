@@ -40,6 +40,9 @@ const ItemDetail = ({ productos }) => {
               <CardFooter>
                 <ButtonGroup spacing="2">
                   <ItemCount />
+                  <Button variant="solid" colorScheme="blue">
+                    Agregar al carrito
+                  </Button>
                 </ButtonGroup>
               </CardFooter>
             </Card>
