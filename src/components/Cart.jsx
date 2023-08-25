@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "../context/ShoppingCartContext";
 
 const Cart = () => {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [email, setEmail] = useState("");
   const [compraRealizada, setCompraRealizada] = useState(false);
+  const [carritoVacio, setCarritoVacio] = useState(true);
 
   const handleNombreChange = (e) => {
     setNombre(e.target.value);
@@ -36,17 +39,24 @@ const Cart = () => {
 
   return (
     <div>
-      <ul>
-        <li>
-          <h3>Producto</h3>
-        </li>
-        <li>
-          <p>Precio</p>
-        </li>
-        <li>
-          <p>Total</p>
-        </li>
-      </ul>
+      {carritoVacio ? (
+        <p>
+          El carrito está vacío. Por favor, vuelva al catálogo para realizar su
+          compra.
+        </p>
+      ) : (
+        <ul>
+          <li>
+            <h3>Producto</h3>
+          </li>
+          <li>
+            <p>Precio</p>
+          </li>
+          <li>
+            <p>Total</p>
+          </li>
+        </ul>
+      )}
       <form onSubmit={handleSubmit}>
         <label>Nombre:</label>
         <input type="text" value={nombre} onChange={handleNombreChange} />
@@ -60,20 +70,3 @@ const Cart = () => {
   );
 };
 export default Cart;
-
-// import { useContext } from "react";
-// import { CartContext } from "../context/ShoppingCartContext";
-
-// const Cart = () => {
-//   const { cart, setCart, longitud } = useContext(CartContext);
-
-//   return (
-//     <div>
-//       <p>{cart}</p>
-//       <button onClick={() => setCart("Nuevo Valor")}>Cambiar valor</button>
-//       <p>{longitud}</p>
-//     </div>
-//   );
-// };
-
-// export default Cart;

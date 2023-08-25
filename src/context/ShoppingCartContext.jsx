@@ -4,8 +4,8 @@ export const CartContext = createContext(null);
 
 export const ShoppingCartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-
   const longitud = cart.length;
+  console.log(longitud);
 
   return (
     <CartContext.Provider value={{ cart, setCart, longitud }}>

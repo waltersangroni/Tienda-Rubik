@@ -1,9 +1,10 @@
-import { Button } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 import { useContext, useState } from "react";
-import ItemDetail from "./ItemDetail";
+import { CartContext } from "../context/ShoppingCartContext";
 
 const ItemCount = ({ stock, id, price, name }) => {
-  const [contador, setContador] = useState(0);
+  const [cart, setCart] = useContext(CartContext);
+  const [contador, setContador] = useState(1);
 
   const sumar = () => {
     setContador(contador + 1);
@@ -16,6 +17,23 @@ const ItemCount = ({ stock, id, price, name }) => {
 
   const reset = () => {
     setContador(0);
+  };
+
+  const addToCart = () => {
+    setCart((currItems) => {
+      const isItemFound = currItems.find((item = item.id === id));
+      if (isItemFound) {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + contador };
+          } else {
+            return item;
+          }
+        });
+      } else {
+        return [...currItems, { id, quantity: contador, price, name }];
+      }
+    });
   };
 
   return (
@@ -35,6 +53,11 @@ const ItemCount = ({ stock, id, price, name }) => {
       >
         Reset
       </Button>
+      <ButtonGroup spacing="2">
+        <Button variant="solid" colorScheme="blue" onClick={() => addToCart()}>
+          Agregar al carrito: {contador}
+        </Button>
+      </ButtonGroup>
     </div>
   );
 };

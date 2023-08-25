@@ -37,14 +37,7 @@ const ItemDetail = ({ productos }) => {
                 </Stack>
               </CardBody>
               <Divider />
-              <CardFooter>
-                <ButtonGroup spacing="2">
-                  <ItemCount />
-                  <Button variant="solid" colorScheme="blue">
-                    Agregar al carrito
-                  </Button>
-                </ButtonGroup>
-              </CardFooter>
+              <CardFooter>ddaddas</CardFooter>
             </Card>
           </div>
         );
@@ -54,3 +47,12 @@ const ItemDetail = ({ productos }) => {
 };
 
 export default ItemDetail;
+
+{
+  /* <ButtonGroup spacing="2">
+                  <ItemCount />
+                  <Button variant="solid" colorScheme="blue">
+                    Agregar al carrito
+                  </Button>
+                </ButtonGroup> */
+}
