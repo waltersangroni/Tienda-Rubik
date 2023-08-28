@@ -8,7 +8,8 @@ const Cart = () => {
   const [email, setEmail] = useState("");
   const [compraRealizada, setCompraRealizada] = useState(false);
 
-  const { cart } = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
+  const { precioTotal, setPrecioTotal } = useContext(CartContext);
 
   const handleNombreChange = (e) => {
     setNombre(e.target.value);
@@ -28,13 +29,32 @@ const Cart = () => {
     if (nombre === "" || apellido === "" || email === "") {
       alert("Por favor, completa todos los campos.");
     } else {
-      setCompraRealizada(true);
-      alert("¡Gracias por su compra!");
+      if (cart.length > 0) {
+        setCompraRealizada(true);
 
-      setNombre("");
-      setApellido("");
-      setEmail("");
+        //SUBIR A BASE DE DATOS
+
+        setPrecioTotal(0);
+        setCart([]);
+        setNombre("");
+        setApellido("");
+        setEmail("");
+      } else {
+        alert("El carrito esta vacio");
+      }
     }
+  };
+
+  const eliminarProducto = (productRemove) => {
+    const newPrecio =
+      precioTotal - productRemove.price * productRemove.quantity;
+    setPrecioTotal(newPrecio);
+
+    const newCart = cart.filter((product) => {
+      return product.id !== productRemove.id;
+    });
+
+    setCart(newCart);
   };
 
   return (
@@ -50,9 +70,13 @@ const Cart = () => {
             <li key={product.id}>
               <h3>{product.name}</h3>
               <p>Precio: {product.price}</p>
-              <p>Total: {product.price * product.quantity}</p>
+              <p>Cantidad: {product.quantity}</p>
+              <button onClick={() => eliminarProducto(product)}>
+                Eliminar producto{" "}
+              </button>
             </li>
           ))}
+          <p>Total: {precioTotal}</p>
         </ul>
       )}
       <form onSubmit={handleSubmit}>

@@ -7,7 +7,7 @@ const Home = () => {
     <div>
       <h1>Bienvenidos a mi tienda!</h1>
       <img src={banner} alt="Carrito" />
-      <Link to={`/catalogo/${"catalogo"}`}>
+      <Link to={`/categoria/${"catalogo"}`}>
         <p>Ingresar al catalogo</p>
       </Link>
     </div>

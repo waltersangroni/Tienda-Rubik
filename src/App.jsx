@@ -25,11 +25,8 @@ const App = () => {
             element={<ItemListContainer />}
           />
           <Route exact path="/item/:id" element={<ItemDetail />} />
-          <Route exact path="/cart" element={<Cart />} />
+          {<Route exact path="/cart" element={<Cart />} />}
         </Routes>
-
-        <CartWidget />
-        <Cart />
       </ShoppingCartContext>
     </BrowserRouter>
   );

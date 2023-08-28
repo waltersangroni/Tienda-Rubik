@@ -18,7 +18,7 @@ const SendOrder = () => {
     email,
   };
 
-  const ordersCollection = collection(db, "order");
+  const ordersCollection = collection(db, "ordenes");
 
   return (
     <div>

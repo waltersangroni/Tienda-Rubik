@@ -4,11 +4,13 @@ import { CartContext } from "../context/ShoppingCartContext";
 
 const ItemCount = ({ stock, id, price, name }) => {
   const { cart, setCart } = useContext(CartContext);
+  const { precioTotal, setPrecioTotal } = useContext(CartContext);
   const [count, setCount] = useState(1);
 
   const addQty = () => {
     setCount(count + 1);
   };
+
   const substracQty = () => {
     if (count > 0) {
       setCount(count - 1);
@@ -19,19 +21,20 @@ const ItemCount = ({ stock, id, price, name }) => {
     setCount(1);
   };
 
-  const addToCart = (quantityToAdd) => {
+  const addToCart = () => {
     setCart((currItems) => {
+      setPrecioTotal(precioTotal + count * price);
       const isItemFound = currItems.find((item) => item.id === id);
       if (isItemFound) {
         return currItems.map((item) => {
           if (item.id === id) {
-            return { ...item, quantity: item.quantity + quantityToAdd };
+            return { ...item, quantity: item.quantity + count };
           } else {
             return item;
           }
         });
       } else {
-        return [...currItems, { id, quantity: quantityToAdd, price, name }];
+        return [...currItems, { id, quantity: count, price, name }];
       }
     });
   };
