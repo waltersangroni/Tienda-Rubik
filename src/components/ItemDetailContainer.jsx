@@ -1,30 +1,31 @@
 import React from "react";
 import ItemDetail from "./ItemDetail";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getDocs, getFirestore, collection } from "firebase/firestore";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+import Loading from "./Loading";
 
 const ItemDetailContainer = () => {
-  const [data, setData] = useState([]);
+  const { id } = useParams();
+  const [cubo, setCubo] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const db = getFirestore();
 
-    const cubosCollection = collection(db, "cubos");
+    const cuboRef = doc(db, "cubos", `${id}`);
 
-    getDocs(cubosCollection).then((querySnapshot) => {
-      const cubos = querySnapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setData(cubos);
+    getDoc(cuboRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        const cuboData = { id: snapshot.id, ...snapshot.data() };
+        setCubo(cuboData);
+        setLoading(false);
+      } else {
+        console.log("El documento no existe");
+      }
     });
-  }, []);
+  }, [id]);
 
-  return (
-    <div>
-      <ItemDetail cubos={data} />
-    </div>
-  );
+  return <div>{loading ? <Loading /> : <ItemDetail cubo={cubo} />}</div>;
 };
-
 export default ItemDetailContainer;
