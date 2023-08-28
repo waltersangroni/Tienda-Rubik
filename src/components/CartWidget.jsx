@@ -1,14 +1,21 @@
 import React from "react";
 import carrito from "../assets/img/carrito-img.png";
-// import { useContext } from "react";
-// import { CartContext } from "../context/ShoppingCartContext";
+import { CartContext } from "../context/ShoppingCartContext";
+import { useContext } from "react";
 
 const CartWidget = () => {
-  // const { longitud } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
+
+  const totalItemsInCart = cart.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
+
+  console.log(totalItemsInCart);
   return (
     <div className="carrito-container">
       <img src={carrito} alt="Carrito" width="40rem" />
-      <p className="number-carrito">4</p>
+      <p className="number-carrito">{totalItemsInCart}</p>
     </div>
   );
 };

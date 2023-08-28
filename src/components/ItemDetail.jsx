@@ -12,47 +12,65 @@ import {
   ButtonGroup,
   Button,
 } from "@chakra-ui/react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+import Loading from "./Loading";
 import ItemCount from "./ItemCount";
 
-const ItemDetail = ({ productos }) => {
+const ItemDetail = ({}) => {
   const { id } = useParams();
+  const [cubo, setCubo] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const filteredProducts = productos.filter((producto) => producto.id == id);
+  useEffect(() => {
+    const db = getFirestore();
+
+    const cuboRef = doc(db, "cubos", `${id}`);
+
+    getDoc(cuboRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        const cuboData = { id: snapshot.id, ...snapshot.data() };
+        setCubo(cuboData);
+        setLoading(false);
+      } else {
+        console.log("El documento no existe");
+      }
+    });
+  }, [id]);
 
   return (
     <Flex>
-      {filteredProducts.map((p) => {
-        return (
-          <div key={p.id}>
-            <Card maxW="sm">
-              <CardBody className="card-container">
-                <Stack mt="6" spacing="3">
-                  <Heading size="md">{p.name}</Heading>
-                  <Text>{p.description}</Text>
-                  <Text>{p.categoria}</Text>
-                  <Text color="black" fontSize="2xl">
-                    {p.price}
-                  </Text>
-                </Stack>
-              </CardBody>
-              <Divider />
-              <CardFooter>ddaddas</CardFooter>
-            </Card>
-          </div>
-        );
-      })}
+      {loading ? (
+        <Loading />
+      ) : (
+        <div key={cubo.id}>
+          <Card maxW="sm">
+            <CardBody className="card-container">
+              <Stack mt="6" spacing="3">
+                <Heading size="md">{cubo.name}</Heading>
+                <img src={cubo.image} alt="" />
+                <Text>{cubo.description}</Text>
+                <Text>{cubo.categoria}</Text>
+                <Text color="black" fontSize="2xl">
+                  {cubo.price}
+                </Text>
+              </Stack>
+            </CardBody>
+            <Divider />
+            <CardFooter>
+              <ItemCount
+                name={cubo.name}
+                price={cubo.price}
+                id={cubo.id}
+                stock={cubo.stock}
+              />
+            </CardFooter>
+          </Card>
+        </div>
+      )}
     </Flex>
   );
 };
 
-export default ItemDetail;
-
-{
-  /* <ButtonGroup spacing="2">
-                  <ItemCount />
-                  <Button variant="solid" colorScheme="blue">
-                    Agregar al carrito
-                  </Button>
-                </ButtonGroup> */
-}
+export default React.memo(ItemDetail);

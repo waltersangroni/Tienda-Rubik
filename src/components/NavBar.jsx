@@ -41,7 +41,7 @@ const NavBar = () => {
             <Link to={`/categoria/${"rubik"}`}>RUBIK´S</Link>
           </MenuItem>
           <MenuItem bg="#f2f2f2" borderRadius="1rem">
-            <Link to={`/catalogo/${"catalogo"}`}>CATALOGO</Link>
+            <Link to={`/categoria/${"catalogo"}`}>CATALOGO</Link>
           </MenuItem>
         </MenuList>
       </Menu>

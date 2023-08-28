@@ -7,7 +7,8 @@ const Cart = () => {
   const [apellido, setApellido] = useState("");
   const [email, setEmail] = useState("");
   const [compraRealizada, setCompraRealizada] = useState(false);
-  const [carritoVacio, setCarritoVacio] = useState(true);
+
+  const { cart } = useContext(CartContext);
 
   const handleNombreChange = (e) => {
     setNombre(e.target.value);
@@ -33,28 +34,25 @@ const Cart = () => {
       setNombre("");
       setApellido("");
       setEmail("");
-      setCompraRealizada(false);
     }
   };
 
   return (
     <div>
-      {carritoVacio ? (
+      {cart.length === 0 ? (
         <p>
           El carrito está vacío. Por favor, vuelva al catálogo para realizar su
           compra.
         </p>
       ) : (
         <ul>
-          <li>
-            <h3>Producto</h3>
-          </li>
-          <li>
-            <p>Precio</p>
-          </li>
-          <li>
-            <p>Total</p>
-          </li>
+          {cart.map((product) => (
+            <li key={product.id}>
+              <h3>{product.name}</h3>
+              <p>Precio: {product.price}</p>
+              <p>Total: {product.price * product.quantity}</p>
+            </li>
+          ))}
         </ul>
       )}
       <form onSubmit={handleSubmit}>
@@ -66,6 +64,7 @@ const Cart = () => {
         <input type="text" value={email} onChange={handleEmailChange} />
         <button type="submit">Confirmar compra</button>
       </form>
+      {compraRealizada && <p>¡Gracias por su compra!</p>}
     </div>
   );
 };

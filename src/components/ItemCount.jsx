@@ -3,46 +3,46 @@ import { useContext, useState } from "react";
 import { CartContext } from "../context/ShoppingCartContext";
 
 const ItemCount = ({ stock, id, price, name }) => {
-  const [cart, setCart] = useContext(CartContext);
-  const [contador, setContador] = useState(1);
+  const { cart, setCart } = useContext(CartContext);
+  const [count, setCount] = useState(1);
 
-  const sumar = () => {
-    setContador(contador + 1);
+  const addQty = () => {
+    setCount(count + 1);
   };
-  const restar = () => {
-    if (contador > 0) {
-      setContador(contador - 1);
+  const substracQty = () => {
+    if (count > 0) {
+      setCount(count - 1);
     }
   };
 
   const reset = () => {
-    setContador(0);
+    setCount(1);
   };
 
-  const addToCart = () => {
+  const addToCart = (quantityToAdd) => {
     setCart((currItems) => {
-      const isItemFound = currItems.find((item = item.id === id));
+      const isItemFound = currItems.find((item) => item.id === id);
       if (isItemFound) {
         return currItems.map((item) => {
           if (item.id === id) {
-            return { ...item, quantity: item.quantity + contador };
+            return { ...item, quantity: item.quantity + quantityToAdd };
           } else {
             return item;
           }
         });
       } else {
-        return [...currItems, { id, quantity: contador, price, name }];
+        return [...currItems, { id, quantity: quantityToAdd, price, name }];
       }
     });
   };
 
   return (
     <div className="contador">
-      <Button colorScheme="blue" size="xs" onClick={restar}>
+      <Button colorScheme="blue" size="xs" onClick={substracQty}>
         -
       </Button>
-      <h2 className="contadorNumero">{contador}</h2>
-      <Button colorScheme="blue" size="xs" onClick={sumar}>
+      <h2 className="contadorNumero">{count}</h2>
+      <Button colorScheme="blue" size="xs" onClick={addQty}>
         +
       </Button>
       <Button
@@ -55,7 +55,7 @@ const ItemCount = ({ stock, id, price, name }) => {
       </Button>
       <ButtonGroup spacing="2">
         <Button variant="solid" colorScheme="blue" onClick={() => addToCart()}>
-          Agregar al carrito: {contador}
+          Agregar al carrito:
         </Button>
       </ButtonGroup>
     </div>
