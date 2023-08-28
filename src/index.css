@@ -10,6 +10,36 @@
     border: 1px solid black;
 }
 
+.bienvenida {
+    margin: auto; 
+    background-color: #e0de51; 
+    width: 29rem;
+    height: 5rem;
+    font-size: 2.5rem;
+    padding: .5rem;    
+    border-radius: .5rem;
+    border: 1px solid black;
+
+}
+
+.imagenPrincipal {
+    width: 100%;
+    height: 100%;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.catalogo {
+    margin: auto; 
+    background-color: #e0de51; 
+    width: 23rem;
+    height: 5rem;
+    font-size: 2.5rem;
+    padding: .5rem;    
+    border-radius: .5rem;
+    border: 1px solid black;
+}
+
 .categorias {
     border: 1px solid black;
     margin-right: 5rem;
@@ -37,8 +67,11 @@
 
 .contador {
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin: 1rem;
+    border-radius: .5rem;
+    border: 1px solid black;
+    padding: .5rem;
     
 }
 
@@ -50,6 +83,10 @@
 
 .contadorReset {
     margin-left: .5rem;
+}
+
+.agregarCarrito {
+    margin-left: 1rem;
 }
 
 .itemlistcontainer {
@@ -87,10 +124,110 @@
     
 }
 
-.contacto {
+.cartContainer {
     background-color: #e0de51;
-    padding: .5rem;
-    margin: 1rem;
+    display: flex;
     border-radius: .5rem;
     border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    margin: 2rem;
+    padding: 1rem;
+    gap: 3rem;
+}
+
+.cartContainer h3 {
+    font-weight: bold;
+}
+
+.botonEliminar {
+    background-color: #fd4444;
+    border-radius: .3rem;  
+    border: 1px solid black; 
+    padding: .2rem;
+    font-weight: bold;
+    margin-top: .7rem;
+}
+
+.precioTotal {
+    border-radius: .3rem;  
+    border: 1px solid black; 
+    padding: .2rem;
+    font-weight: bold;
+    margin-top: .7rem;
+}
+
+.enviandoOrden {  
+    font-weight: bold;
+    margin:1rem;
+}
+
+.formulario {
+    background-color: #e0de51;
+    display: flex;
+    border-radius: .5rem;
+    border: 1px solid black;
+    margin: 2rem;
+    padding: 1rem;
+    gap: 3rem;
+}
+
+.nombre {
+    border-radius: .5rem;
+    border: 1px solid black;
+    padding: .3rem;
+}
+
+.email {
+    border-radius: .5rem;
+    border: 1px solid black;
+    padding: .3rem;
+}
+
+.enviar {
+    background-color: white;
+    border-radius: .5rem;
+    border: 1px solid black;
+    padding: .3rem;
+    font-weight: bold;
+}
+
+.numeroOrden {
+    font-weight: bold;
+    margin:1rem;
+}
+
+.carritoVacio {
+    text-align: center;
+    font-weight: bold;
+    margin:1rem;
+}
+
+.Gracias {
+    background-color: #e0de51;
+    text-align: center;
+    font-weight: bold;
+    border-radius: .5rem;
+    border: 1px solid black;
+    margin: 2rem;
+    padding: 1rem;
+    gap: 3rem;
+}
+
+.copy_container {
+    background-color: #fd4444;
+    height: 2rem;
+    margin: .3rem;
+    margin-top: 1rem;
+    border: 1px solid black;
+    border-radius: .5rem;
+    
+}
+
+.copy_container p {
+    padding-top: .5rem;
+    text-align: right;
+    font-size: .8rem;
+    margin-right: 1rem;
 }

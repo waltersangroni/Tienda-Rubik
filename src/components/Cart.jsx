@@ -21,23 +21,26 @@ const Cart = () => {
   return (
     <div>
       {cart.length === 0 ? (
-        <p>
+        <p className="carritoVacio">
           El carrito está vacío. Por favor, vuelva al catálogo para realizar su
           compra.
         </p>
       ) : (
-        <ul>
+        <ul className="cartContainer">
           {cart.map((product) => (
             <li key={product.id}>
               <h3>{product.name}</h3>
               <p>Precio: {product.price}</p>
               <p>Cantidad: {product.quantity}</p>
-              <button onClick={() => eliminarProducto(product)}>
+              <button
+                className="botonEliminar"
+                onClick={() => eliminarProducto(product)}
+              >
                 Eliminar producto{" "}
               </button>
             </li>
           ))}
-          <p>Total: {precioTotal}</p>
+          <p className="precioTotal">Total: ${precioTotal}</p>
         </ul>
       )}
       <SendOrder />

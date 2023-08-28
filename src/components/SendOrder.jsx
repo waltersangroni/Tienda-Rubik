@@ -52,24 +52,28 @@ const SendOrder = () => {
 
   return (
     <div>
-      <h1>Enviando Ordenes</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 className="enviandoOrden">Enviando Ordenes</h1>
+      <form className="formulario" onSubmit={handleSubmit}>
         <input
+          className="nombre"
           type="text"
           placeholder="Nombre y Apellido"
           value={fullName}
           onChange={(e) => setFullName(e.target.value)}
         />
         <input
+          className="email"
           type="text"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button type="submit">Enviar Informacion</button>
+        <button className="enviar" type="submit">
+          Enviar Informacion
+        </button>
       </form>
-      <p>Numero de orden: {orderId}</p>
-      {compraRealizada && <p>¡Gracias por su compra!</p>}
+      <p className="numeroOrden">Numero de orden: {orderId}</p>
+      {compraRealizada && <p className="Gracias">¡Gracias por su compra!</p>}
     </div>
   );
 };

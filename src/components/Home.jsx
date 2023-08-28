@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div>
-      <h1>Bienvenidos a mi tienda!</h1>
-      <img src={banner} alt="Carrito" />
+      <h1 className="bienvenida">Bienvenidos a mi tienda!!</h1>
+      <img src={banner} alt="Carrito" className="imagenPrincipal" />
       <Link to={`/categoria/${"catalogo"}`}>
-        <p>Ingresar al catalogo</p>
+        <p className="catalogo">Ingresar al catalogo</p>
       </Link>
     </div>
   );

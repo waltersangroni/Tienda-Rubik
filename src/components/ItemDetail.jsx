@@ -21,13 +21,11 @@ const ItemDetail = ({ cubo }) => {
               <Heading size="md">{cubo.name}</Heading>
               <img src={cubo.image} alt="" />
               <Text>{cubo.description}</Text>
-              <Text>{cubo.categoria}</Text>
               <Text color="black" fontSize="2xl">
-                {cubo.price}
+                ${cubo.price}
               </Text>
             </Stack>
           </CardBody>
-          <Divider />
           <CardFooter>
             <ItemCount
               name={cubo.name}
